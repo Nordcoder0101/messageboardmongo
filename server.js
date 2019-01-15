@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const session = require('express-session')
 
-const MONGODB_URI = 'mongodb://localhost/#*#*#*#*#*#'
+const MONGODB_URI = 'mongodb://localhost/messageboard'
 mongoose.connect(MONGODB_URI)
 app.use(bodyParser.urlencoded({ extended: true}))
 app.use(session({

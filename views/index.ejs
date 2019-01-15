@@ -7,6 +7,32 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello World!</h1>
+  <h1>The Dojo Message Board</h1>
+  <hr>
+  <form action="/createmessage" method="POST">
+    <p>Name:</p>
+    <input type="text" name="author">
+    <p>Message:</p>
+    <textarea name="message" cols="80" rows="7"></textarea><br>
+    <input type="submit" value="Post Message">
+  </form>
+
+  <% for (let i in messages){ %>
+    <h2><%= messages[i].author %> said:</h2>
+    <h2><%= messages[i].message %></h2>
+    <% for (let j in messages[i].comments){ %>
+      <h4><%= messages[i].comments[j].author %></h4>
+      <h4><%= messages[i].comments[j].comment %></h4>
+      
+    <% } %>
+    <form action="/createcomment/<%= messages[i]._id %>" method="POST">
+      <p>Name:</p>
+      <input type="text" name="author">
+      <p>Comment:</p>
+      <textarea name="comment" cols="60" rows="5"></textarea><br>
+      <input type="submit" value="Post Comment">
+    </form>
+  <% } %>
+  
 </body>
 </html>
